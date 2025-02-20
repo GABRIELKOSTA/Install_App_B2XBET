@@ -1,9 +1,9 @@
 {
   "name": "B2XBET.APP",
   "short_name": "B2X",
-  "start_url": "https://b2x.bet.br/",
+  "start_url": "/",
   "display": "standalone",
-  "id": "https://b2x.bet.br/",
+  "id": "/",
   "icons": [
     {
       "src": "src/assets/img/ico/ICO_192.png",
