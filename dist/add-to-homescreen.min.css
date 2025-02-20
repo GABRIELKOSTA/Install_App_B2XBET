@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 .adhs-container {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: fixed;
   top: 0;
   left: 0;
@@ -23,8 +25,8 @@
 }
 
 .adhs-container .adhs-modal {
+  max-height: 90vh;
   color: #212121;
-  background-color: transparent;
   border-radius: 7px;
   left: 50%;
   margin: auto;
@@ -717,6 +719,9 @@
   border: none;
   padding: 10px 33px;
   border-radius: 9px;
+}
+.adhs-container .adhs-modal .adhs-button-cancel {
+  display: none !important;
 }
 
 .adhs-container.adhs-desktop-safari
