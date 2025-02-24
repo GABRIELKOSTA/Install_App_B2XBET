@@ -197,7 +197,6 @@
   display: inline-block;
   /* border: 0.5px solid lightgrey; */
   border-radius: 4px;
-  box-shadow: 1px 1px 2px gray;
   margin-right: 3px;
   padding: 2px 8px;
   white-space: nowrap;
@@ -234,7 +233,7 @@
   display: inline;
   position: relative;
   left: 0px;
-  top: 3px;
+  top: 0px;
 }
 
 .adhs-container
@@ -257,8 +256,9 @@
   .adhs-list-button-image-right {
   display: inline;
   position: relative;
-  margin: 0 0 0 5px;
-  top: 2px;
+  margin: 0 0 0 0px;
+  top: 0px;
+  padding: 0px 8px;
 }
 
 /* IOS Safari */
@@ -704,16 +704,21 @@
     display: none !important;
   }
   .adhs-install-app {
-    font-size: 15px !important;
-    display: none
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    padding-bottom: 30px !important;
   }
   .adhs-app-name {
     font-size: 18px !important;
     display: none;
   }
   .adhs-instruction {
-    font-size: 12px !important;
+    font-size: 13px !important;
     font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 !important;
   }
   .adhs-emphasis {
     display: none;
@@ -721,14 +726,41 @@
   .adhs-blurb {
     font-size: 12px !important;
   }
+  .adhs-list {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: start !important;
+  }
+
   .adhs-list-button-text {
-    font-size: 14px !important;
+    font-size: 13px !important;
+    padding-top: 0px;
+  }
+  .adhs-list-button {
+    background-color: transparent !important;
+    padding-bottom: 0px !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    margin: 0 !important;
   }
   .adhs-blurb {
     display: none !important;
   }
   .adhs-number {
     font-weight: 700 !important;
+    font-size: 18px !important;
+    padding: 0 !important;
+  }
+  .adhs-list-item {
+    display: flex !important;
+    align-items: center !important;
+  }
+  .adhs-number-container {
+    margin: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
   }
 }
 
@@ -753,6 +785,12 @@
   }
   .adhs-number {
     font-weight: 700 !important;
+  }
+  .adhs-app-name {
+    display: none;
+  }
+  .adhs-install-app {
+    font-size: 18px !important;
   }
 }
 .adhs-container.adhs-desktop-chrome .adhs-modal .adhs-blurb {
