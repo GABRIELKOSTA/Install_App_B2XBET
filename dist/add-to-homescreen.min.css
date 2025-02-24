@@ -244,8 +244,6 @@
   .adhs-list-button-image-left {
   display: inline;
   position: relative;
-  margin: 0 5px 0 0;
-  top: 2px;
 }
 
 .adhs-container
@@ -761,6 +759,10 @@
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
+  }
+  .adhs-list-button-image-left {
+    margin: 0 8px 5px 0;
+    top: 2px;
   }
 }
 
