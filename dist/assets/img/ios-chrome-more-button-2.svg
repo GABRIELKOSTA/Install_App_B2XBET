@@ -1,0 +1,18 @@
+<svg width="18" height="25" viewBox="0 0 18 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_880_282" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="1" y="1" width="16" height="23">
+<path d="M17 1H1V24H17V1Z" fill="white"/>
+</mask>
+<g mask="url(#mask0_880_282)">
+<mask id="mask1_880_282" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="1" y="1" width="16" height="23">
+<path d="M17 1.5H1V23.5H17V1.5Z" fill="white"/>
+</mask>
+<g mask="url(#mask1_880_282)">
+<mask id="mask2_880_282" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="1" y="1" width="16" height="23">
+<path d="M17 1.5H1V23.5H17V1.5Z" fill="white"/>
+</mask>
+<g mask="url(#mask2_880_282)">
+<path d="M2.5 23.5C2.1 23.5 1.75 23.35 1.45 23.05C1.15 22.75 1 22.4 1 22V9.275C1 8.875 1.15 8.525 1.45 8.225C1.75 7.925 2.1 7.775 2.5 7.775H6.725V9.275H2.5V22H15.5V9.275H11.225V7.775H15.5C15.9 7.775 16.25 7.925 16.55 8.225C16.85 8.525 17 8.875 17 9.275V22C17 22.4 16.85 22.75 16.55 23.05C16.25 23.35 15.9 23.5 15.5 23.5H2.5ZM8.225 15.825V4.4L6.025 6.6L4.95 5.525L8.975 1.5L13 5.525L11.925 6.6L9.725 4.4V15.825H8.225Z" fill="#007AFF"/>
+</g>
+</g>
+</g>
+</svg>
