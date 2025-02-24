@@ -1,8 +1,6 @@
-<!-- Example web app with add to homescreen implemented.  JS in test-page.js -->
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
-    <!-- ====================  BEGIN: These headers required for any webapp  ==================== -->
 
     <meta charset="utf-8" />
     <meta
@@ -11,22 +9,13 @@
     />
     <meta name="mobile-web-app-capable" content="yes" />
     <title>B2XBET.APP</title>
-    <link rel="icon" href="./dist/assets/sample/img/ICO2X.svg" type="image/a-icon">
-    <!-- replace with your web app title-->
-    <link rel="manifest" crossorigin="use-credentials" href="manifest.json" />
-    <!-- copy your app logo to <web root>/apple-touch-icon.png, this is required by IOS Safari -->
-    <!-- ====================  END: These headers required for any webapp  ==================== -->
+    <link rel="icon" href="src/assets/img/ico/ICO_192.png" type="image/a-icon">
 
-    <!-- ====================  BEGIN: Include add-to-homescreen resources  ==================== -->
+    <link rel="manifest" crossorigin="use-credentials" href="manifest.json" />
 
     <link rel="stylesheet" href="./dist/add-to-homescreen.min.css" />
   </head>
-  <!-- ====================  END: Include add-to-homescreen resources  ==================== -->
-  <!-- ====================  BEGIN: Testing Tailwind CSS side effects ================ -->
-  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-  <!-- ====================  END: Testing Tailwind CSS side effects ================ -->
-
-  <!-- ====================  BEGIN: EXAMPLE WEBSITE CONTENT ==================== -->
+  
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
@@ -405,7 +394,7 @@
           appName: "B2X.BET.BR", // Name of the app. [Required]
           appNameDisplay: "standalone", // Display position of the app name [Optional]
           appIconUrl: "dist/assets/img/App_na_tela.png", // App icon link (square, at least 40 x 40 pixels) [Required]
-          assetUrl: "./dist/assets/img/", // Link to directory of library image assets [Required]
+          assetUrl: "dist/assets/img/", // Link to directory of library image assets [Required]
           maxModalDisplayCount: -1, // If set, the modal will only show this many times [Optional. Default: -1 (no limit).]
           displayOptions:{ showMobile: true, showDesktop: true }, // show on mobile/desktop [Optional] Default: show everywhere
           allowClose: false, // allow the user to close the modal by tapping outside of it. [Optional. Default: true]
