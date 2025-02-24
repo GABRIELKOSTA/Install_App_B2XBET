@@ -729,7 +729,7 @@
   .adhs-list {
     display: flex !important;
     justify-content: center !important;
-    align-items: start !important;
+    align-items: center !important;
   }
 
   .adhs-list-button-text {
