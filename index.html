@@ -1,8 +1,6 @@
-<!-- Example web app with add to homescreen implemented.  JS in test-page.js -->
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
-    <!-- ====================  BEGIN: These headers required for any webapp  ==================== -->
 
     <meta charset="utf-8" />
     <meta
@@ -11,56 +9,395 @@
     />
     <meta name="mobile-web-app-capable" content="yes" />
     <title>B2XBET.APP</title>
-    <link rel="icon" href="./dist/assets/sample/img/ICO2X.svg" type="image/a-icon">
-    <!-- replace with your web app title-->
-    <link rel="manifest" crossorigin="use-credentials" href="manifest.json" />
-    <!-- copy your app logo to <web root>/apple-touch-icon.png, this is required by IOS Safari -->
-    <!-- ====================  END: These headers required for any webapp  ==================== -->
+    <link rel="icon" href="src/assets/img/ico/ICO_192.png" type="image/a-icon">
 
-    <!-- ====================  BEGIN: Include add-to-homescreen resources  ==================== -->
+    <link rel="manifest" crossorigin="use-credentials" href="manifest.json" />
 
     <link rel="stylesheet" href="./dist/add-to-homescreen.min.css" />
   </head>
-  <!-- ====================  END: Include add-to-homescreen resources  ==================== -->
-  <!-- ====================  BEGIN: Testing Tailwind CSS side effects ================ -->
-  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-  <!-- ====================  END: Testing Tailwind CSS side effects ================ -->
-
-  <!-- ====================  BEGIN: EXAMPLE WEBSITE CONTENT ==================== -->
+  
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-    /* Reset básico */
-html {
-    height: 100%;
-}
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: "Montserrat";
-    height: 100%;
-    color: #333;
-    background-color: transparent;
-}
-
+    :root {
+      color-scheme: light dark;
+    }
+    html,
+    body {
+      height: 100%;
+    }
+    body {
+      --accent-color: #007aff;
+      --device-color: #c4c4c6;
+      font-family: system-ui;
+      -webkit-font-smoothing: antialiased;
+      background-color: #fff;
+      color: #000;
+      font-size: 17px;
+      font-weight: 500;
+      line-height: 28px;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      user-select: none;
+    }
+    @media (prefers-color-scheme: light) {
+      body {
+        --accent-color: #0a84ff;
+        --device-color: #5a5a5e;
+        background-color: #1c1c1c;
+        color: #fff;
+      }
+    }
+    section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      justify-content: center;
+    }
+    .device {
+      margin: 40px 30px 0;
+    }
+    .device > svg {
+      vertical-align: top;
+      max-width: 100%;
+      perspective: 1000px;
+      color: var(--device-color);
+    }
+    .device.ipad {
+      display: none;
+    }
+    .is-ipad .device.ipad {
+      display: block;
+    }
+    .is-ipad .device.iphone {
+      display: none;
+    }
+    .content {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      margin: 32px 20px 100px;
+    }
+    h1 {
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 26px;
+      margin: 0;
+      padding: 0;
+    }
+    ol {
+      margin: 32px 0 0;
+      padding: 0;
+      text-align: left;
+      align-self: center;
+    }
+    ol > li {
+      padding-left: 2px;
+    }
+    ol > li > b {
+      font-weight: 500;
+      color: var(--accent-color);
+    }
+    .bottom-bar-tips {
+      display: none;
+    }
+    .icon {
+      display: inline-block;
+      width: 20px;
+      height: 28px;
+      vertical-align: top;
+      margin: 0 2px;
+    }
+    .add-icon {
+      margin-right: 0;
+    }
+    .tooltip {
+      padding: 8px 12px;
+      color: #fff;
+      background-color: var(--accent-color);
+      border-radius: 22px;
+      position: fixed;
+      top: 20px;
+      right: calc(env(safe-area-inset-right) + var(--loffset));
+      transform: translateX(50%);
+      display: none;
+    }
+    .is-ipad .tooltip {
+      top: 30px;
+    }
+    .is-iphone .tooltip,
+    .is-ipad .tooltip {
+      display: inline-block;
+    }
+    .tooltip > .share-icon {
+      margin-left: 4px;
+      margin-right: 0;
+    }
+    .tooltip > .tip-icon {
+      display: inline-block;
+      position: absolute;
+      bottom: 100%;
+      right: 50%;
+      transform: translate(50%, 1px) scaleY(-1);
+      color: var(--accent-color);
+      width: 19px;
+      height: 8px;
+    }
+    @media (orientation: landscape) {
+      .is-iphone section {
+        flex-direction: row;
+      }
+      .is-iphone .device {
+        align-self: flex-end;
+      }
+      .is-iphone .device > svg {
+        height: 75vh;
+        transform: translateY(5px);
+      }
+      .is-iphone .content {
+        text-align: left;
+        margin: 70px 20px 32px 0;
+      }
+      .is-iphone ol {
+        align-self: left;
+      }
+    }
+    @media (orientation: portrait) {
+      .tooltip {
+        right: calc(env(safe-area-inset-right) + var(--poffset));
+      }
+      .is-iphone .bottom-bar-tips {
+        display: block;
+      }
+      .is-iphone .tool-bar-tips {
+        display: none;
+      }
+      .is-iphone .tooltip {
+        top: auto;
+        bottom: calc(env(safe-area-inset-bottom) + 20px);
+        right: 50%;
+      }
+      .is-iphone .tooltip > .tip-icon {
+        top: 100%;
+        bottom: auto;
+        transform: translate(50%, -1px);
+      }
+    }
   </style>
   <body>
+    <section>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        style="position: absolute; width: 0; height: 0; left: -10000px"
+      >
+        <defs>
+          <path
+            id="icon-add"
+            d="M16.72 7.28c.86.86 1.02 2.03 1.02 3.54v6.37c0 1.52-.16 2.69-1.02 3.54-.85.85-2.03 1.01-3.54 1.01H6.81c-1.51 0-2.69-.16-3.55-1.01-.85-.85-1-2.02-1-3.54V10.8c0-1.49.15-2.66 1.01-3.52.84-.84 2.03-1.01 3.52-1.01h6.39c1.51 0 2.69.16 3.54 1.01Zm-.61 3.32c0-.87-.11-1.66-.57-2.12-.47-.47-1.27-.59-2.13-.59H6.6c-.87 0-1.69.12-2.15.58-.46.47-.57 1.26-.57 2.14v6.81c0 .86.11 1.65.58 2.12.46.46 1.27.58 2.12.58h6.83c.86 0 1.66-.12 2.13-.58.45-.47.57-1.26.57-2.12V10.6ZM6.17 14.01c0-.47.31-.79.78-.79H9.22V10.94c0-.46.32-.78.77-.78.46 0 .79.32.79.78v2.28h2.28c.46 0 .78.32.78.79 0 .45-.33.76-.78.76H10.78v2.28c0 .46-.33.78-.79.78-.45 0-.77-.32-.77-.78V14.77H6.95c-.46 0-.78-.31-.78-.76Z"
+            fill="currentColor"
+          ></path>
+          <path
+            id="icon-share"
+            d="M5.22 22.81h9.55c1.8 0 2.73-.92 2.73-2.69V11.95c0-1.77-.93-2.69-2.73-2.69h-2.4v1.63h2.3c.77 0 1.2.39 1.2 1.2v7.89c0 .81-.43 1.21-1.2 1.21H5.32c-.77 0-1.2-.4-1.2-1.21V12.09c0-.81.43-1.2 1.2-1.2H7.63V9.26H5.22c-1.79 0-2.72.92-2.72 2.69v8.17c0 1.77.93 2.69 2.72 2.69ZM9.99 16.2c.42 0 .77-.35.77-.76V7.08L10.7 5.85l.51.6L12.38 7.7c.14.15.33.22.52.22.37 0 .68-.27.68-.66 0-.2-.08-.35-.22-.49L10.57 4.09c-.19-.2-.37-.27-.58-.27-.2 0-.38.07-.57.27L6.63 6.77c-.14.14-.22.29-.22.49 0 .39.3.66.68.66.19 0 .39-.07.52-.22L8.77 6.45l.52-.6-.06 1.23v8.36c0 .41.35.76.76.76Z"
+            fill="currentColor"
+          ></path>
+          <path
+            id="icon-tip"
+            d="M0 1c2.1 0 5.41 3.11 7.5 5.33.74.78 1.1 1.17 1.46 1.28.33.12.62.12.96.01.35-.12.72-.51 1.46-1.29C13.48 4.11 16.82 1 19 1V0H0Z"
+            fill="currentColor"
+          ></path>
+        </defs>
+      </svg>
+      <div id="device-iphone" class="device iphone" style="padding-bottom: 290px;">
+        <svg
+          width="350"
+          height="auto"
+          viewBox="0 0 294 323"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <pattern
+              id="icon-app-iphone"
+              patternUnits="objectBoundingBox"
+              width="1"
+              height="1"
+            >
+              <image
+                href="src/assets/img/ico/ICO_192.png"
+                x="0"
+                y="0"
+                width="120"
+                height="120"
+              ></image>
+            </pattern>
+          </defs>
+          <g fill="currentColor" stroke="currentColor" opacity="0.3">
+            <path
+              d="M 0.5 319.01 C 0.5 321.21 2.3 323 4.51 323 C 6.72 323 8.5 321.2 8.5 318.99 L 0.5 319.01 Z M 286 319 C 286 321.21 287.79 323 290 323 C 292.21 323 294 321.21 294 319 H 286 Z M 8.5 318.99 L 8.08 54.07 L 0.08 54.09 L 0.5 319.01 L 8.5 318.99 Z M 54.08 8 H 240 V 0 H 54.08 V 8 Z M 286 54 V 319 H 294 V 54 H 286 Z M 240 8 C 265.4 8 286 28.59 286 54 H 294 C 294 24.18 269.82 0 240 0 V 8 Z M 8.08 54.07 C 8.04 28.64 28.65 8 54.08 8 V 0 C 24.22 0 0.03 24.23 0.08 54.09 L 8.08 54.07 Z"
+            ></path>
+            <rect x="21.5" y="71.5" width="53" height="53" rx="15.5"></rect>
+            <rect x="21.5" y="269.5" width="53" height="53" rx="15.5"></rect>
+            <rect x="21.5" y="137.5" width="53" height="53" rx="15.5"></rect>
+            <rect x="21.5" y="203.5" width="53" height="53" rx="15.5"></rect>
+            <rect x="87.5" y="71.5" width="53" height="53" rx="15.5"></rect>
+            <rect x="87.5" y="269.5" width="53" height="53" rx="15.5"></rect>
+            <rect x="153.5" y="71.5" width="53" height="53" rx="15.5"></rect>
+            <rect x="153.5" y="269.5" width="53" height="53" rx="15.5"></rect>
+            <rect x="219.5" y="71.5" width="53" height="53" rx="15.5"></rect>
+            <rect x="219.5" y="269.5" width="53" height="53" rx="15.5"></rect>
+            <rect x="219.5" y="137.5" width="53" height="53" rx="15.5"></rect>
+            <rect x="219.5" y="203.5" width="53" height="53" rx="15.5"></rect>
+            <rect x="102.5" y="16.5" width="89" height="25" rx="12.5"></rect>
+            <rect
+              x="87.5"
+              y="137.5"
+              width="120"
+              height="120"
+              rx="36"
+              stroke="none"
+            ></rect>
+          </g>
+          <rect
+            x="87.5"
+            y="137.5"
+            width="120"
+            height="120"
+            rx="36"
+            fill="url(#icon-app-iphone)"
+          ></rect>
+        </svg>
+      </div>
+      <div class="device ipad">
+        <svg
+          width="444"
+          height="284"
+          viewBox="0 0 444 284"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <pattern
+              id="icon-app-ipad"
+              patternUnits="objectBoundingBox"
+              width="1"
+              height="1"
+            >
+              <image
+                href="src/assets/img/ico/ICO_192.png"
+                x="0"
+                y="0"
+                width="120"
+                height="120"
+              ></image>
+            </pattern>
+          </defs>
+          <g fill="currentColor" stroke="currentColor" opacity="0.3">
+            <path
+              d="M.5 278.01c.01 3.31 2.7 6 6.01 5.99s6-2.7 5.99-6.01l-12 .02ZM432 278c0 3.31 2.69 6 6 6s6-2.69 6-6H432Zm-419.5-.01L12.07 46.06.07 46.08.5 278.01l12-.02ZM46.07 12H398V0H46.07V12ZM432 46V278h12V46H432ZM398 12c18.78 0 34 15.22 34 34h12c0-25.41-20.6-46-46-46V12ZM12.07 46.06C12.04 27.26 27.27 12 46.07 12V0C20.64 0 .03 20.65.07 46.08l12-.02Z"
+            ></path>
+            <rect x="96.5" y="30.5" width="53" height="53" rx="15.5"></rect>
+            <rect x="30.5" y="30.5" width="53" height="53" rx="15.5"></rect>
+            <rect x="96.5" y="228.5" width="53" height="53" rx="15.5"></rect>
+            <rect x="30.5" y="228.5" width="53" height="53" rx="15.5"></rect>
+            <rect x="96.5" y="96.5" width="53" height="53" rx="15.5"></rect>
+            <rect x="30.5" y="96.5" width="53" height="53" rx="15.5"></rect>
+            <rect x="96.5" y="162.5" width="53" height="53" rx="15.5"></rect>
+            <rect x="30.5" y="162.5" width="53" height="53" rx="15.5"></rect>
+            <rect x="162.5" y="30.5" width="53" height="53" rx="15.5"></rect>
+            <rect x="162.5" y="228.5" width="53" height="53" rx="15.5"></rect>
+            <rect x="228.5" y="30.5" width="53" height="53" rx="15.5"></rect>
+            <rect x="228.5" y="228.5" width="53" height="53" rx="15.5"></rect>
+            <rect x="294.5" y="30.5" width="53" height="53" rx="15.5"></rect>
+            <rect x="360.5" y="30.5" width="53" height="53" rx="15.5"></rect>
+            <rect x="294.5" y="228.5" width="53" height="53" rx="15.5"></rect>
+            <rect x="360.5" y="228.5" width="53" height="53" rx="15.5"></rect>
+            <rect x="294.5" y="96.5" width="53" height="53" rx="15.5"></rect>
+            <rect x="360.5" y="96.5" width="53" height="53" rx="15.5"></rect>
+            <rect x="294.5" y="162.5" width="53" height="53" rx="15.5"></rect>
+            <rect x="360.5" y="162.5" width="53" height="53" rx="15.5"></rect>
+            <rect
+              x="161.5"
+              y="96"
+              width="120"
+              height="120"
+              rx="36"
+              stroke="none"
+            ></rect>
+          </g>
+          <rect
+            x="161.5"
+            y="96"
+            width="120"
+            height="120"
+            rx="36"
+            fill="url(#icon-app-ipad)"
+          ></rect>
+        </svg>
+      </div>
+      <div class="content" style="display: none;">
+        <h1>Coloque a B2X.BET.BR na sua Tela Inicial</h1>
+        <ol class="tool-bar-tips">
+          <li>
+            Toque em
+            <b>
+              <svg class="icon share-icon">
+                <use xlink:href="#icon-share"></use>
+              </svg>
+            </b>
+            na barra de ferramentas
+          </li>
+          <li>
+            Depois em
+            <b
+              ><svg class="icon add-icon">
+                <use xlink:href="#icon-add"></use>
+              </svg>
+              Adicionar à Tela de Início</b
+            >
+          </li>
+        </ol>
+        <ol class="bottom-bar-tips">
+          <li>
+            Toque em
+            <b>
+              <svg class="icon share-icon">
+                <use xlink:href="#icon-share"></use>
+              </svg>
+            </b>
+            na barra abaixo
+          </li>
+          <li>
+            Depois em
+            <b
+              ><svg class="icon add-icon">
+                <use xlink:href="#icon-add"></use>
+              </svg>
+              Adicionar à Tela de Início</b
+            >
+          </li>
+        </ol>
+      </div>
+      <div class="tooltip">
+        Toque em
+        <svg class="icon share-icon"><use xlink:href="#icon-share"></use></svg>
+        <svg class="icon tip-icon"><use xlink:href="#icon-tip"></use></svg>
+      </div>
+    </section>
 
-<script src="./dist/add-to-homescreen.min.js"></script>
+    <script src="./dist/add-to-homescreen.min.js"></script>
     <script>
       window.addEventListener("load", function () {
         window.AddToHomeScreenInstance = window.AddToHomeScreen({
           appName: "B2X.BET.BR", // Name of the app. [Required]
           appNameDisplay: "standalone", // Display position of the app name [Optional]
-          appIconUrl: "dist/assets/img/ICO2X.svg", // App icon link (square, at least 40 x 40 pixels) [Required]
-          assetUrl: "./dist/assets/img/", // Link to directory of library image assets [Required]
+          appIconUrl: "dist/assets/img/App_na_tela.png", // App icon link (square, at least 40 x 40 pixels) [Required]
+          assetUrl: "dist/assets/img/", // Link to directory of library image assets [Required]
           maxModalDisplayCount: -1, // If set, the modal will only show this many times [Optional. Default: -1 (no limit).]
           displayOptions:{ showMobile: true, showDesktop: true }, // show on mobile/desktop [Optional] Default: show everywhere
-          allowClose: true, // allow the user to close the modal by tapping outside of it. [Optional. Default: true]
+          allowClose: false, // allow the user to close the modal by tapping outside of it. [Optional. Default: true]
           // (Debugging: Use this.clearModalDisplayCount() to reset the count)
         });
         window.AddToHomeScreenInstance.show(); // popup is only shown if web app is not already added to homescreen
