@@ -20,7 +20,7 @@
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
     :root {
-      color-scheme: light dark;
+      color-scheme: light;
     }
     html,
     body {
@@ -388,6 +388,8 @@
 
     <script src="./dist/add-to-homescreen.min.js"></script>
     <script>
+      document.documentElement.setAttribute('data-theme', 'light');
+      
       window.addEventListener("load", function () {
         window.AddToHomeScreenInstance = window.AddToHomeScreen({
           appName: "B2X.BET.BR", // Name of the app. [Required]
@@ -396,7 +398,7 @@
           assetUrl: "dist/assets/img/", // Link to directory of library image assets [Required]
           maxModalDisplayCount: -1, // If set, the modal will only show this many times [Optional. Default: -1 (no limit).]
           displayOptions:{ showMobile: true, showDesktop: true }, // show on mobile/desktop [Optional] Default: show everywhere
-          allowClose: false, // allow the user to close the modal by tapping outside of it. [Optional. Default: true]
+          allowClose: true, // allow the user to close the modal by tapping outside of it. [Optional. Default: true]
           // (Debugging: Use this.clearModalDisplayCount() to reset the count)
         });
         window.AddToHomeScreenInstance.show(); // popup is only shown if web app is not already added to homescreen
