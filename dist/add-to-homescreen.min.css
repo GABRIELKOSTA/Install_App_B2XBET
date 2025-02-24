@@ -751,6 +751,9 @@
     font-size: 14px !important;
     font-weight: 500 !important;
   }
+  .adhs-number {
+    font-weight: 700 !important;
+  }
 }
 .adhs-container.adhs-desktop-chrome .adhs-modal .adhs-blurb {
   margin-top: 0px;
