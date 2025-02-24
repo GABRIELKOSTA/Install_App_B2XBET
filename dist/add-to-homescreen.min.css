@@ -727,6 +727,9 @@
   .adhs-blurb {
     display: none !important;
   }
+  .adhs-number {
+    font-weight: 700 !important;
+  }
 }
 
 /* PC */
